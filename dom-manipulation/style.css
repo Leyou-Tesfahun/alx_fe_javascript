@@ -1,4 +1,3 @@
-/* Body and page setup */
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background: #f0f2f5;
@@ -11,14 +10,12 @@ body {
   min-height: 100vh;
 }
 
-/* Main heading */
 h1 {
   margin-bottom: 30px;
   color: #2c3e50;
   text-shadow: 1px 1px 2px #bdc3c7;
 }
 
-/* Quote display styling */
 #quoteDisplay {
   background: #ffffff;
   padding: 20px 30px;
@@ -32,7 +29,6 @@ h1 {
   text-align: center;
 }
 
-/* "Show New Quote" button */
 #newQuote {
   padding: 12px 25px;
   font-size: 1rem;
@@ -49,7 +45,6 @@ h1 {
   background-color: #2980b9;
 }
 
-/* Container for the add quote form */
 #addQuoteSection div {
   display: flex;
   gap: 10px;
@@ -57,7 +52,6 @@ h1 {
   flex-wrap: wrap;
 }
 
-/* Inputs for new quote and category */
 #addQuoteSection input[type="text"] {
   padding: 10px 15px;
   border: 1.5px solid #ccc;
@@ -72,7 +66,6 @@ h1 {
   outline: none;
 }
 
-/* Add Quote button */
 #addQuoteSection button {
   padding: 10px 20px;
   font-size: 1rem;
@@ -88,7 +81,6 @@ h1 {
   background-color: #27ae60;
 }
 
-/* Responsive adjustments */
 @media (max-width: 640px) {
   #quoteDisplay {
     font-size: 1.1rem;
