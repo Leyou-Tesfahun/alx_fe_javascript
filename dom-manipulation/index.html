@@ -13,7 +13,6 @@
   <label for="categoryFilter">Filter by Category: </label>
   <select id="categoryFilter" onchange="filterQuotes()">
     <option value="all">All Categories</option>
-    <!-- Categories will be dynamically populated here -->
   </select>
 
   <div id="quoteDisplay">Loading...</div>
@@ -21,6 +20,11 @@
   <button id="newQuote">Show New Quote</button>
 
   <div id="addQuoteSection"></div>
+
+  <div id="importExportSection" style="margin-top: 30px; text-align: center;">
+    <button id="exportBtn">Export Quotes to JSON</button>
+    <input type="file" id="importFile" accept=".json" style="margin-left: 15px;" />
+  </div>
 
   <script src="script.js"></script>
 </body>
