@@ -1,98 +1,49 @@
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f0f4f8;
+  font-family: Arial, sans-serif;
+  margin: 40px;
+  background-color: #f9f9f9;
   color: #333;
-  margin: 40px auto;
-  max-width: 600px;
-  padding: 0 20px;
-  line-height: 1.6;
 }
 
 h1 {
   text-align: center;
-  color: #2c3e50;
+  color: #444;
 }
 
 #quoteDisplay {
-  background: #fff;
-  border-left: 6px solid #3498db;
+  background-color: #fff;
+  border: 1px solid #ddd;
   padding: 20px;
-  margin: 30px 0;
-  font-size: 1.4em;
-  font-style: italic;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-  min-height: 80px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #34495e;
-  transition: background-color 0.3s ease;
-}
-
-#quoteDisplay:hover {
-  background-color: #e8f1fc;
+  margin: 20px auto;
+  width: 80%;
+  font-size: 1.2em;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 button {
-  background-color: #3498db;
-  border: none;
+  background-color: #4CAF50;
   color: white;
-  padding: 12px 25px;
-  font-size: 1em;
-  border-radius: 5px;
+  padding: 10px 16px;
+  margin: 10px 5px;
+  border: none;
+  border-radius: 4px;
   cursor: pointer;
-  transition: background-color 0.25s ease;
-  margin-top: 10px;
+  font-size: 1em;
 }
 
 button:hover {
-  background-color: #2980b9;
-}
-
-#syncBtn {
-  background-color: #27ae60;
-  margin-left: 10px;
-}
-
-#syncBtn:hover {
-  background-color: #219150;
+  background-color: #45a049;
 }
 
 input[type="text"] {
-  padding: 12px 10px;
-  font-size: 1em;
-  border: 2px solid #ddd;
-  border-radius: 5px;
-  width: 100%;
-  box-sizing: border-box;
-  margin-top: 10px;
-  transition: border-color 0.3s ease;
+  padding: 8px;
+  width: 200px;
+  margin: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
 
-input[type="text"]:focus {
-  border-color: #3498db;
-  outline: none;
-}
-
-div > input, div > button {
-  margin-top: 10px;
-}
-
-h2 {
-  color: #2c3e50;
-  margin-top: 40px;
-  font-weight: 600;
-}
-
-hr {
-  margin: 40px 0;
-  border: 0;
-  border-top: 1px solid #ddd;
-}
-
-#syncStatus {
-  margin-top: 10px;
-  font-weight: bold;
-  color: green;
-  min-height: 20px;
+div {
+  text-align: center;
 }
