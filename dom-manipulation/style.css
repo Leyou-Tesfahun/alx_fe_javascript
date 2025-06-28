@@ -1,46 +1,29 @@
 body {
   font-family: Arial, sans-serif;
   margin: 20px;
-  background-color: #f9f9f9;
-  color: #333;
+  max-width: 700px;
 }
 
-h1 {
-  color: #4CAF50;
+#quoteDisplay {
+  margin: 20px 0;
+  font-size: 1.2em;
+  padding: 10px;
+  border: 1px solid #ddd;
+  min-height: 80px;
+  background: #f9f9f9;
 }
 
-.quote-box {
-  border: 1px solid #ccc;
-  padding: 20px;
-  margin-bottom: 20px;
-  background-color: #fff;
-  min-height: 60px;
-}
-
-.form, .import-export {
-  margin-top: 20px;
-}
-
-input[type="text"] {
-  padding: 8px;
-  margin: 5px 5px 10px 0;
-  width: 250px;
+input {
+  padding: 5px;
+  margin-right: 10px;
 }
 
 button {
-  padding: 8px 15px;
-  margin: 5px 5px 10px 0;
-  background-color: #4CAF50;
-  color: white;
-  border: none;
+  padding: 5px 10px;
   cursor: pointer;
 }
 
-button:hover {
-  background-color: #45a049;
-}
-
 select {
-  padding: 6px;
-  margin: 10px 0;
+  padding: 5px;
+  margin-bottom: 10px;
 }
