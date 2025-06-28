@@ -4,25 +4,18 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Dynamic Quote Generator</title>
-  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <h1>Dynamic Quote Generator</h1>
 
-  <!-- Quote Display Area -->
-  <div id="quoteDisplay">
-    <p>Click the button to see a quote!</p>
+  <div id="quoteDisplay" style="margin-bottom:20px; font-size:1.2em; font-style: italic;"></div>
+  
+  <button id="newQuote">Show New Quote</button>
+
+  <div id="addQuoteSection" style="margin-top: 30px;">
+    <!-- Add Quote Form will be created here by JS -->
   </div>
 
-  <!-- Button to Show Random Quote -->
-  <div>
-    <button id="newQuote">Show New Quote</button>
-  </div>
-
-  <!-- Placeholder for dynamically generated quote form -->
-  <div id="quoteFormContainer"></div>
-
-  <!-- Link to JavaScript -->
   <script src="script.js"></script>
 </body>
 </html>
