@@ -1,59 +1,102 @@
-/* Basic reset and font */
+/* Body and page setup */
 body {
-  font-family: Arial, sans-serif;
-  margin: 40px;
-  background-color: #f9f9f9;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #f0f2f5;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   color: #333;
+  margin: 0;
+  min-height: 100vh;
 }
 
-/* Centered page title */
+/* Main heading */
 h1 {
-  text-align: center;
-  color: #444;
+  margin-bottom: 30px;
+  color: #2c3e50;
+  text-shadow: 1px 1px 2px #bdc3c7;
 }
 
-/* Quote display box styling */
+/* Quote display styling */
 #quoteDisplay {
-  background-color: #fff;
-  border: 1px solid #ddd;
-  padding: 20px;
-  margin: 20px auto;
-  width: 80%;
-  font-size: 1.2em;
+  background: #ffffff;
+  padding: 20px 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  max-width: 600px;
+  font-size: 1.3rem;
+  font-style: italic;
+  color: #34495e;
+  margin-bottom: 20px;
   text-align: center;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  min-height: 60px; /* ensures some height even if empty */
 }
 
-/* Style for all buttons */
-button {
-  background-color: #4CAF50;
-  color: white;
-  padding: 10px 16px;
-  margin: 10px 5px;
+/* "Show New Quote" button */
+#newQuote {
+  padding: 12px 25px;
+  font-size: 1rem;
   border: none;
-  border-radius: 4px;
+  border-radius: 5px;
+  background-color: #3498db;
+  color: white;
   cursor: pointer;
-  font-size: 1em;
+  transition: background-color 0.3s ease;
+  margin-bottom: 40px;
+}
+
+#newQuote:hover {
+  background-color: #2980b9;
+}
+
+/* Container for the add quote form */
+#addQuoteSection div {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Inputs for new quote and category */
+#addQuoteSection input[type="text"] {
+  padding: 10px 15px;
+  border: 1.5px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  width: 280px;
+  transition: border-color 0.3s ease;
+}
+
+#addQuoteSection input[type="text"]:focus {
+  border-color: #3498db;
+  outline: none;
+}
+
+/* Add Quote button */
+#addQuoteSection button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 6px;
+  background-color: #2ecc71;
+  color: white;
+  cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
-/* Button hover effect */
-button:hover {
-  background-color: #45a049;
+#addQuoteSection button:hover {
+  background-color: #27ae60;
 }
 
-/* Input boxes styling */
-input[type="text"] {
-  padding: 8px;
-  width: 200px;
-  margin: 5px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 1em;
-}
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  #quoteDisplay {
+    font-size: 1.1rem;
+    padding: 15px 20px;
+    max-width: 90%;
+  }
 
-/* Center all div content */
-div {
-  text-align: center;
+  #addQuoteSection input[type="text"] {
+    width: 100%;
+  }
 }
