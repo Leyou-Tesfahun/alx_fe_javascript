@@ -13,7 +13,7 @@ const newQuoteBtn = document.getElementById('newQuote');
 const addQuoteSection = document.getElementById('addQuoteSection');
 
 // Function to display a random quote from the quotes array
-function showRandomQuote() {
+function displayRandomQuote() {
   if (quotes.length === 0) {
     quoteDisplay.textContent = "No quotes available. Add some!";
     return;
@@ -74,12 +74,12 @@ function addQuote(text, category) {
   alert("Quote added successfully!");
 
   // Show the newly added quote immediately
-  showRandomQuote();
+  displayRandomQuote();
 }
 
 // Event listener for Show New Quote button
-newQuoteBtn.addEventListener('click', showRandomQuote);
+newQuoteBtn.addEventListener('click', displayRandomQuote);
 
 // Initialize: show first quote and create the add quote form
-showRandomQuote();
+displayRandomQuote();
 createAddQuoteForm();
