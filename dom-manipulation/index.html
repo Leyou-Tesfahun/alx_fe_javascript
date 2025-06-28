@@ -2,41 +2,37 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Dynamic Quote Generator</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dynamic Quote Generator with Sync</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <h1>Dynamic Quote Generator</h1>
 
-  <!-- Filter by Category -->
-  <label for="categoryFilter">Filter by category:</label>
-  <select id="categoryFilter" onchange="filterQuotes()">
-    <option value="all">All Categories</option>
-  </select>
+  <div>
+    <select id="categoryFilter" onchange="filterQuotes()">
+      <option value="all">All Categories</option>
+      <!-- Categories populated dynamically -->
+    </select>
+  </div>
 
-  <!-- Display Area -->
-  <div id="quoteDisplay" class="quote-box"></div>
-
-  <!-- Show New Quote -->
+  <div id="quoteDisplay"></div>
   <button id="newQuote">Show New Quote</button>
 
-  <!-- Add New Quote -->
-  <div class="form">
+  <h2>Add a New Quote</h2>
+  <div>
     <input id="newQuoteText" type="text" placeholder="Enter a new quote" />
     <input id="newQuoteCategory" type="text" placeholder="Enter quote category" />
-    <button id="addQuoteBtn">Add Quote</button>
+    <button onclick="addQuote()">Add Quote</button>
   </div>
 
-  <!-- JSON Import/Export -->
-  <div class="import-export">
-    <button onclick="exportToJsonFile()">Export Quotes (JSON)</button>
-    <input type="file" id="importFile" accept=".json" onchange="importFromJsonFile(event)" />
-  </div>
+  <h2>Import / Export Quotes (JSON)</h2>
+  <button onclick="exportToJsonFile()">Export Quotes</button>
+  <input type="file" id="importFile" accept=".json" onchange="importFromJsonFile(event)" />
 
-  <!-- Sync Button and Status -->
+  <h2>Sync with Server</h2>
   <button id="syncBtn">Sync with Server</button>
-  <div id="syncStatus" style="margin-top:10px; color: blue;"></div>
+  <div id="syncStatus" style="color: blue; margin-top: 10px;"></div>
 
   <script src="script.js"></script>
 </body>
