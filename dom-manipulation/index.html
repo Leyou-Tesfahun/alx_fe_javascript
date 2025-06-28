@@ -4,15 +4,109 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Dynamic Quote Generator</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f0f2f5;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: #333;
+    }
+
+    h1 {
+      margin-bottom: 30px;
+      color: #2c3e50;
+      text-shadow: 1px 1px 2px #bdc3c7;
+    }
+
+    #quoteDisplay {
+      background: #ffffff;
+      padding: 20px 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      max-width: 600px;
+      font-size: 1.3rem;
+      font-style: italic;
+      color: #34495e;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    #newQuote {
+      padding: 12px 25px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 5px;
+      background-color: #3498db;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      margin-bottom: 40px;
+    }
+
+    #newQuote:hover {
+      background-color: #2980b9;
+    }
+
+    #addQuoteSection div {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    #addQuoteSection input[type="text"] {
+      padding: 10px 15px;
+      border: 1.5px solid #ccc;
+      border-radius: 6px;
+      font-size: 1rem;
+      width: 280px;
+      transition: border-color 0.3s ease;
+    }
+
+    #addQuoteSection input[type="text"]:focus {
+      border-color: #3498db;
+      outline: none;
+    }
+
+    #addQuoteSection button {
+      padding: 10px 20px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 6px;
+      background-color: #2ecc71;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    #addQuoteSection button:hover {
+      background-color: #27ae60;
+    }
+
+    @media (max-width: 640px) {
+      #quoteDisplay {
+        font-size: 1.1rem;
+        padding: 15px 20px;
+        max-width: 90%;
+      }
+
+      #addQuoteSection input[type="text"] {
+        width: 100%;
+      }
+    }
+  </style>
 </head>
 <body>
   <h1>Dynamic Quote Generator</h1>
 
-  <div id="quoteDisplay" style="margin-bottom:20px; font-size:1.2em; font-style: italic;"></div>
+  <div id="quoteDisplay">Loading...</div>
   
   <button id="newQuote">Show New Quote</button>
 
-  <div id="addQuoteSection" style="margin-top: 30px;">
+  <div id="addQuoteSection">
     <!-- Add Quote Form will be created here by JS -->
   </div>
 
