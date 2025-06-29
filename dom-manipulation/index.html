@@ -1,29 +1,79 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Dynamic Quote Generator</title>
-  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 700px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    #quoteDisplay {
+      margin: 1rem 0;
+      font-size: 1.25rem;
+      font-style: italic;
+      border-left: 4px solid #007BFF;
+      padding-left: 1rem;
+      color: #333;
+      min-height: 60px;
+    }
+    #categoryFilter {
+      margin-bottom: 1rem;
+      padding: 0.5rem;
+      font-size: 1rem;
+    }
+    #addQuoteSection input {
+      margin: 0.25rem 0.5rem 0.25rem 0;
+      padding: 0.4rem;
+      font-size: 1rem;
+    }
+    #addQuoteSection button {
+      padding: 0.45rem 0.9rem;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+    #notification {
+      background-color: #dff0d8;
+      color: #3c763d;
+      border: 1px solid #d6e9c6;
+      padding: 0.5rem;
+      margin: 1rem 0;
+      border-radius: 4px;
+      display: none;
+    }
+    #notification.show {
+      display: block;
+    }
+    button#newQuote {
+      padding: 0.6rem 1.2rem;
+      font-size: 1rem;
+      margin-bottom: 1rem;
+      cursor: pointer;
+      background-color: #007BFF;
+      border: none;
+      color: white;
+      border-radius: 4px;
+    }
+  </style>
 </head>
 <body>
   <h1>Dynamic Quote Generator</h1>
 
-  <!-- Category Filter Dropdown -->
-  <label for="categoryFilter">Filter by Category:</label>
+  <label for="categoryFilter"><strong>Filter by Category:</strong></label>
   <select id="categoryFilter" onchange="filterQuotes()">
     <option value="all">All Categories</option>
-    <!-- Dynamic categories will appear here -->
   </select>
 
-  <!-- Quote Display -->
-  <div id="quoteDisplay">Loading...</div>
+  <div id="quoteDisplay">No quote displayed yet.</div>
 
-  <!-- New Random Quote Button -->
   <button id="newQuote">Show New Quote</button>
 
-  <!-- Quote Form Section -->
   <div id="addQuoteSection"></div>
+
+  <div id="notification"></div>
 
   <script src="script.js"></script>
 </body>
