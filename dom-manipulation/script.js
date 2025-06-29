@@ -25,8 +25,7 @@ function saveQuotes() {
   localStorage.setItem('quotes', JSON.stringify(quotes));
 }
 
-function displayRandomQuote() {
-  // Use currently selected category for filtering
+function showRandomQuote() {
   const selectedCategory = categoryFilter.value;
   const filtered = selectedCategory === 'all' ? quotes : quotes.filter(q => q.category === selectedCategory);
 
@@ -203,16 +202,15 @@ function init() {
   loadQuotes();
   populateCategories();
   createAddQuoteForm();
-  displayRandomQuote();
+  showRandomQuote();
 
   categoryFilter.addEventListener('change', filterQuotes);
-  newQuoteBtn.addEventListener('click', displayRandomQuote);
+  newQuoteBtn.addEventListener('click', showRandomQuote);
   importFileInput.addEventListener('change', importFromJsonFile);
   exportBtn.addEventListener('click', exportQuotes);
 
-  // Periodically sync data with server
-  setInterval(fetchQuotesFromServer, 60000); // every 1 minute
-  setInterval(syncQuotes, 120000); // every 2 minutes
+  setInterval(fetchQuotesFromServer, 60000);
+  setInterval(syncQuotes, 120000);
 }
 
 init();
