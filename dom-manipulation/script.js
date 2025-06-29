@@ -26,8 +26,9 @@ function saveQuotes() {
 }
 
 function displayRandomQuote() {
-  const selected = categoryFilter.value;
-  const filtered = selected === 'all' ? quotes : quotes.filter(q => q.category === selected);
+  // Use currently selected category for filtering
+  const selectedCategory = categoryFilter.value;
+  const filtered = selectedCategory === 'all' ? quotes : quotes.filter(q => q.category === selectedCategory);
 
   if (filtered.length === 0) {
     quoteDisplay.textContent = 'No quotes in this category.';
@@ -51,7 +52,7 @@ function populateCategories() {
   });
 
   const lastFilter = localStorage.getItem('lastFilter');
-  if (lastFilter && uniqueCategories.includes(lastFilter)) {
+  if (lastFilter && (lastFilter === 'all' || uniqueCategories.includes(lastFilter))) {
     categoryFilter.value = lastFilter;
   } else {
     categoryFilter.value = 'all';
@@ -59,8 +60,22 @@ function populateCategories() {
 }
 
 function filterQuotes() {
-  localStorage.setItem('lastFilter', categoryFilter.value);
-  displayRandomQuote();
+  const selectedCategory = categoryFilter.value;
+  localStorage.setItem('lastFilter', selectedCategory);
+
+  const filteredQuotes = selectedCategory === 'all' 
+    ? quotes 
+    : quotes.filter(q => q.category === selectedCategory);
+
+  if (filteredQuotes.length === 0) {
+    quoteDisplay.textContent = 'No quotes in this category.';
+    return;
+  }
+
+  const randomQuote = filteredQuotes[Math.floor(Math.random() * filteredQuotes.length)];
+  quoteDisplay.textContent = `"${randomQuote.text}" — [${randomQuote.category}]`;
+
+  sessionStorage.setItem('lastQuote', JSON.stringify(randomQuote));
 }
 
 function createAddQuoteForm() {
@@ -195,9 +210,9 @@ function init() {
   importFileInput.addEventListener('change', importFromJsonFile);
   exportBtn.addEventListener('click', exportQuotes);
 
-  setInterval(fetchQuotesFromServer, 60000);
-  setInterval(syncQuotes, 120000);
+  // Periodically sync data with server
+  setInterval(fetchQuotesFromServer, 60000); // every 1 minute
+  setInterval(syncQuotes, 120000); // every 2 minutes
 }
 
 init();
-
