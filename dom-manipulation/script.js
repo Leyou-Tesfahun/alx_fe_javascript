@@ -52,51 +52,37 @@ function saveQuotes() {
 // Show notification message
 function showNotification(message) {
   notification.textContent = message;
-  notification.classList.remove('hidden');
-  setTimeout(() => notification.classList.add('hidden'), 3000);
+  notification.classList.add('show');
+  setTimeout(() => notification.classList.remove('show'), 3000);
 }
 
-// Initial sync: merge server quotes with local, server takes precedence
-async function initialSync() {
-  const serverQuotes = await fetchQuotesFromServer();
-  const merged = [...serverQuotes];
+// Sync quotes with server data, server data takes precedence
+async function syncQuotes() {
+  try {
+    const serverQuotes = await fetchQuotesFromServer();
+    let updated = false;
 
-  quotes.forEach(localQuote => {
-    if (!merged.some(q => q.text === localQuote.text)) {
-      merged.push(localQuote);
-    }
-  });
-
-  quotes = merged;
-  saveQuotes();
-  populateCategories();
-  filterQuotes();
-  showNotification('Initial sync complete');
-}
-
-// Periodic sync every minute to get updates from server
-async function periodicSync() {
-  const serverQuotes = await fetchQuotesFromServer();
-  let updated = false;
-
-  serverQuotes.forEach(serverQuote => {
-    const index = quotes.findIndex(q => q.text === serverQuote.text);
-    if (index >= 0) {
-      if (JSON.stringify(quotes[index]) !== JSON.stringify(serverQuote)) {
-        quotes[index] = serverQuote;
+    serverQuotes.forEach(serverQuote => {
+      const index = quotes.findIndex(q => q.text === serverQuote.text);
+      if (index >= 0) {
+        if (JSON.stringify(quotes[index]) !== JSON.stringify(serverQuote)) {
+          quotes[index] = serverQuote; // server wins conflict
+          updated = true;
+        }
+      } else {
+        quotes.push(serverQuote);
         updated = true;
       }
-    } else {
-      quotes.push(serverQuote);
-      updated = true;
-    }
-  });
+    });
 
-  if (updated) {
-    saveQuotes();
-    populateCategories();
-    filterQuotes();
-    showNotification('Quotes updated from server');
+    if (updated) {
+      saveQuotes();
+      populateCategories();
+      filterQuotes();
+      showNotification('Quotes synced with server!');
+    }
+  } catch (error) {
+    console.error('Error syncing quotes:', error);
   }
 }
 
@@ -238,5 +224,5 @@ populateCategories();
 createAddQuoteForm();
 setupImportExport();
 filterQuotes();
-initialSync();
-setInterval(periodicSync, 60000); // sync every 60 seconds
+syncQuotes();
+setInterval(syncQuotes, 60000); // sync every 60 seconds
