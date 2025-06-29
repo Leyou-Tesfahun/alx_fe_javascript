@@ -78,7 +78,7 @@ async function syncQuotes() {
     if (updated) {
       saveQuotes();
       populateCategories();
-      showRandomQuote();
+      filterQuotes();
       showNotification('Quotes synced with server!');
     }
   } catch (error) {
@@ -88,16 +88,7 @@ async function syncQuotes() {
 
 // Populate categories dropdown dynamically
 function populateCategories() {
-  // Clear all options first
-  while (categoryFilter.firstChild) {
-    categoryFilter.removeChild(categoryFilter.firstChild);
-  }
-
-  const allOption = document.createElement('option');
-  allOption.value = 'all';
-  allOption.textContent = 'All Categories';
-  categoryFilter.appendChild(allOption);
-
+  categoryFilter.innerHTML = '<option value="all">All Categories</option>';
   const categories = [...new Set(quotes.map(q => q.category))];
   categories.forEach(cat => {
     const option = document.createElement('option');
@@ -107,10 +98,8 @@ function populateCategories() {
   });
 
   const savedFilter = localStorage.getItem('selectedCategory');
-  if (savedFilter && (savedFilter === 'all' || categories.includes(savedFilter))) {
+  if (savedFilter && categories.includes(savedFilter)) {
     categoryFilter.value = savedFilter;
-  } else {
-    categoryFilter.value = 'all';
   }
 }
 
@@ -118,12 +107,6 @@ function populateCategories() {
 function filterQuotes() {
   const selected = categoryFilter.value;
   localStorage.setItem('selectedCategory', selected);
-  showRandomQuote();
-}
-
-// Show a random quote based on current filter
-function showRandomQuote() {
-  const selected = categoryFilter.value;
 
   const filtered = selected === 'all'
     ? quotes
@@ -150,11 +133,16 @@ function addQuote(text, category) {
   saveQuotes();
   populateCategories();
   categoryFilter.value = category;
-  showRandomQuote();
+  filterQuotes();
   showNotification('Quote added!');
 
   // Post new quote to server
   postQuoteToServer(newQuote);
+}
+
+// Display a random quote based on current filter
+function displayRandomQuote() {
+  filterQuotes();
 }
 
 // Create form to add new quote dynamically
@@ -205,7 +193,7 @@ function importFromJsonFile(event) {
       quotes.push(...imported);
       saveQuotes();
       populateCategories();
-      showRandomQuote();
+      filterQuotes();
       showNotification('Quotes imported!');
     } catch (err) {
       alert('Import failed: ' + err.message);
@@ -231,12 +219,10 @@ function setupImportExport() {
 }
 
 // Initialization
-newQuoteBtn.addEventListener('click', showRandomQuote);
-categoryFilter.addEventListener('change', filterQuotes);
-
+newQuoteBtn.addEventListener('click', displayRandomQuote);
 populateCategories();
 createAddQuoteForm();
 setupImportExport();
-showRandomQuote();
+filterQuotes();
 syncQuotes();
 setInterval(syncQuotes, 60000); // sync every 60 seconds
