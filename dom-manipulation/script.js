@@ -4,7 +4,6 @@ const categoryFilter = document.getElementById('categoryFilter');
 const addQuoteSection = document.getElementById('addQuoteSection');
 const importFileInput = document.getElementById('importFile');
 const exportBtn = document.getElementById('exportBtn');
-const notification = document.getElementById('notification');
 
 let quotes = [];
 
@@ -93,7 +92,7 @@ function addQuote() {
   const category = categoryInput.value.trim();
 
   if (!text || !category) {
-    showNotification('Please enter both quote and category.', true);
+    alert('Please enter both quote and category.');
     return;
   }
 
@@ -104,16 +103,7 @@ function addQuote() {
 
   textInput.value = '';
   categoryInput.value = '';
-  showNotification('Quote added successfully!');
-}
-
-function showNotification(msg, isError = false) {
-  notification.textContent = msg;
-  notification.style.color = isError ? 'red' : 'green';
-  notification.classList.add('show');
-  setTimeout(() => {
-    notification.classList.remove('show');
-  }, 3000);
+  alert('Quote added successfully!');
 }
 
 function importFromJsonFile(event) {
@@ -130,9 +120,9 @@ function importFromJsonFile(event) {
       saveQuotes();
       populateCategories();
       filterQuotes();
-      showNotification('Quotes imported successfully!');
+      alert('Quotes imported successfully!');
     } catch (e) {
-      showNotification('Error importing quotes: ' + e.message, true);
+      alert('Error importing quotes: ' + e.message);
     }
   };
   if (event.target.files[0]) {
@@ -149,7 +139,7 @@ function exportQuotes() {
   a.download = 'quotes.json';
   a.click();
   URL.revokeObjectURL(url);
-  showNotification('Quotes exported successfully!');
+  alert('Quotes exported successfully!');
 }
 
 async function fetchQuotesFromServer() {
@@ -174,10 +164,10 @@ async function fetchQuotesFromServer() {
       saveQuotes();
       populateCategories();
       filterQuotes();
-      showNotification('Quotes synchronized with server.');
+      alert('Quotes synchronized with server!');
     }
   } catch (e) {
-    showNotification('Error fetching from server: ' + e.message, true);
+    alert('Error fetching from server: ' + e.message);
   }
 }
 
@@ -188,9 +178,9 @@ async function syncQuotes() {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(quotes)
     });
-    showNotification('Quotes posted to server successfully.');
+    alert('Quotes synced with server!');
   } catch (e) {
-    showNotification('Error posting to server: ' + e.message, true);
+    alert('Error posting to server: ' + e.message);
   }
 }
 
@@ -210,3 +200,4 @@ function init() {
 }
 
 init();
+
