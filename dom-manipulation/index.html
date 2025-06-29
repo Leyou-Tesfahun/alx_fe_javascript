@@ -1,21 +1,30 @@
-<!DOCTYPE html>
+<<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Dynamic Quote Generator</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <h1>Dynamic Quote Generator</h1>
-  <div id="notification" class="hidden"></div>
+
+  <!-- Category Filter Dropdown -->
   <label for="categoryFilter">Filter by Category:</label>
   <select id="categoryFilter" onchange="filterQuotes()">
     <option value="all">All Categories</option>
+    <!-- Dynamic categories will appear here -->
   </select>
+
+  <!-- Quote Display -->
   <div id="quoteDisplay">Loading...</div>
+
+  <!-- New Random Quote Button -->
   <button id="newQuote">Show New Quote</button>
+
+  <!-- Quote Form Section -->
   <div id="addQuoteSection"></div>
+
   <script src="script.js"></script>
 </body>
 </html>
